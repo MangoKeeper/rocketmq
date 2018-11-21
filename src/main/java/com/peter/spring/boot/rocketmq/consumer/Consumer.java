@@ -35,9 +35,9 @@ public class Consumer implements CommandLineRunner {
     /**
      * 初始化RocketMq的监听信息，渠道信息
      */
-    public void messageListener(){
+    public void messageListener() {
 
-        DefaultMQPushConsumer consumer=new DefaultMQPushConsumer("SpringBootRocketMqGroup");
+        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("SpringBootRocketMqGroup");
 
         consumer.setNamesrvAddr(namesrvAddr);
         try {
@@ -54,9 +54,9 @@ public class Consumer implements CommandLineRunner {
             consumer.registerMessageListener((MessageListenerConcurrently) (msgs, context) -> {
 
                 // 会把不同的消息分别放置到不同的队列中
-                for(Message msg:msgs){
+                for (Message msg : msgs) {
 
-                    System.out.println("接收到了消息："+new String(msg.getBody()));
+                    System.out.println("接收到了消息：" + new String(msg.getBody()));
                 }
                 return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
             });

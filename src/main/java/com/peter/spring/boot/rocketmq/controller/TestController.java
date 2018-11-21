@@ -21,9 +21,9 @@ public class TestController {
     private Producer producer;
 
     @RequestMapping("/push")
-    public String pushMsg(String msg){
+    public String pushMsg(String msg) {
         try {
-            return producer.send("PushTopic","push",msg);
+            return producer.send("PushTopic", "push", msg);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (RemotingException e) {
